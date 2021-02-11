@@ -3,6 +3,8 @@ package com.graph.redis.lp.object;
 import com.graph.redis.core.object.BaseGraphPart;
 
 public class Facility extends BaseGraphPart{
+
+
 	private String number;
 	private String abbrv;
 	private String name;
