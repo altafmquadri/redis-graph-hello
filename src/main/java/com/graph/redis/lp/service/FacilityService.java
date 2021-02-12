@@ -24,6 +24,7 @@ public class FacilityService {
 	
 	
 	public List<Facility> getAll() {
+		@SuppressWarnings("unchecked")
 		List<Facility> all = (List<Facility>) repository.getAll(new Facility());
 		return all;
 	}

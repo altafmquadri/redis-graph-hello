@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.graph.redis.core.object.Constants;
 import com.graph.redis.core.object.RepositoryEdge;
 import com.graph.redis.core.object.RepositoryNode;
-import com.graph.redis.lp.object.Facility;
+
 import com.redislabs.redisgraph.Record;
 import com.redislabs.redisgraph.ResultSet;
 import com.redislabs.redisgraph.graph_entities.Edge;
