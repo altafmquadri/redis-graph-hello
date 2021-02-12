@@ -69,7 +69,7 @@ public abstract class RepositoryNode {
 				fields[i].setAccessible(true);
 				if(fields[i].getAnnotation(GraphElementIdentifier.class) != null){
 					String id = UUID.randomUUID().toString();
-					//fields[i].set(this, id);
+					fields[i].set(this, id);
 					System.out.println(fields[i].getName());
 				}
 				Object value;
