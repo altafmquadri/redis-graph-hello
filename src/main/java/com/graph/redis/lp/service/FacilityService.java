@@ -27,4 +27,9 @@ public class FacilityService {
 		List<Facility> all = (List<Facility>) repository.getAll(new Facility());
 		return all;
 	}
+
+	public void update(Facility facility) {
+		repository.update(facility);
+		
+	}
 }
