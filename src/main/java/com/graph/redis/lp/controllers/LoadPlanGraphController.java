@@ -84,6 +84,7 @@ public class LoadPlanGraphController {
 	@PutMapping(path = "/Facility/{id}",consumes = "application/json", produces = "application/json")
 	public ResponseEntity<String> updateFacility (@RequestBody Facility facility, @PathVariable("id") String id)  {
 		facilityService.update(facility, id);
+	
 		return ResponseEntity.ok("");
 	}
 
