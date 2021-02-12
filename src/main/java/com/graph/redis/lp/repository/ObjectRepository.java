@@ -12,6 +12,8 @@ public interface ObjectRepository {
 
 	public void create(RepositoryNode repositoryNode);
 	
+	public void update(RepositoryNode repositoryNode, String id);
+	
 	public void createAll(List<? extends RepositoryNode> repositoryNodes);
 
 

@@ -129,9 +129,9 @@ public abstract class RepositoryNode {
 						us += ns + "." + name + " = '" + value + "'";
 						us += ", ";
 					}
-					us = us.replaceAll(", $", " ");
 				}
 			}
+			us = us.replaceAll(", $", " ");
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

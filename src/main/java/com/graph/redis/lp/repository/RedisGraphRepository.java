@@ -53,13 +53,12 @@ public class RedisGraphRepository implements ObjectRepository{
 		String query = " MATCH ";
 		query += "(n:";
 		query += repositoryNode.getClass().getSimpleName();
-		query += " {uid:";
+		query += " {uid:'";
 		query += id;
-		query += " }) SET ";
+		query += "' }) SET ";
 		query += repositoryNode.getCypherUpdateString("n");
 		System.out.println(query);
 		graph.query(graphName, query);
-		
 	}
 
 
