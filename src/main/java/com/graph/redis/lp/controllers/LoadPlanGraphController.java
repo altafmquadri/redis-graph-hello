@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -80,9 +81,9 @@ public class LoadPlanGraphController {
 		return ResponseEntity.ok("");
 	}
 	
-	@PutMapping(path = "/Facility",consumes = "application/json", produces = "application/json")
-	public ResponseEntity<String> updateFacility (@RequestBody Facility facility)  {
-		facilityService.update(facility);
+	@PutMapping(path = "/Facility/{id}",consumes = "application/json", produces = "application/json")
+	public ResponseEntity<String> updateFacility (@RequestBody Facility facility, @PathVariable("id") String id)  {
+		facilityService.update(facility, id);
 		return ResponseEntity.ok("");
 	}
 

@@ -28,8 +28,8 @@ public class FacilityService {
 		return all;
 	}
 
-	public void update(Facility facility) {
-		repository.update(facility);
+	public void update(Facility facility, String id) {
+		repository.update(facility, id);
 		
 	}
 }
