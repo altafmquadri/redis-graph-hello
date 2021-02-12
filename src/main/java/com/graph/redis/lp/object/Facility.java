@@ -1,8 +1,15 @@
 package com.graph.redis.lp.object;
  
 import com.graph.redis.core.object.BaseGraphPart;
+import com.graph.redis.core.object.GraphElementIdentifier;
+
+import java.lang.reflect.Field;
+import java.util.UUID;
 
 public class Facility extends BaseGraphPart{
+
+	@GraphElementIdentifier
+	private String uid;
 	private String number;
 	private String abbrv;
 	private String name;
@@ -14,8 +21,14 @@ public class Facility extends BaseGraphPart{
 	private String coloc;
 	private String state;
 	private String gateway;
-	
 
+
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
 	public String getNumber() {
 		return number;
 	}
@@ -82,4 +95,26 @@ public class Facility extends BaseGraphPart{
 	public void setGateway(String gateway) {
 		this.gateway = gateway;
 	}
+
+
+	public static void main(String[] args){
+		Facility facility = new Facility();
+		for(Field field: facility.getClass().getDeclaredFields()){
+		if(field.getAnnotation(GraphElementIdentifier.class) != null){
+			try {
+				field.setAccessible(true);
+				field.set(facility, UUID.randomUUID().toString());
+				System.out.println(facility.getUid());
+				System.out.println(field.get(facility));
+			}
+			catch (Exception e){
+				System.out.println("Error");
+			}
+
+		}
+
+		System.out.println(field.getAnnotatedType().getType().getTypeName());
+		}
+	}
+
 }

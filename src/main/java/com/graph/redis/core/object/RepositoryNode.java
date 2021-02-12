@@ -3,6 +3,7 @@ package com.graph.redis.core.object;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,6 +30,8 @@ public abstract class RepositoryNode {
 		Class<? extends Object> c1 = this.getClass();
 		Field[] fields = c1.getDeclaredFields();
 		List<String> properties = new ArrayList<String>();
+		//Check field annotation
+		//If has @ID annotation generate the ID
 		try {
 			for (int i = 0; i < fields.length; i++) {
 				String name = fields[i].getName();
@@ -64,6 +67,11 @@ public abstract class RepositoryNode {
 			for (int i = 0; i < fields.length; i++) {
 				String name = fields[i].getName();
 				fields[i].setAccessible(true);
+				if(fields[i].getAnnotation(GraphElementIdentifier.class) != null){
+					String id = UUID.randomUUID().toString();
+					//fields[i].set(this, id);
+					System.out.println(fields[i].getName());
+				}
 				Object value;
 				value = fields[i].get(this);
 				if(value != null) {
