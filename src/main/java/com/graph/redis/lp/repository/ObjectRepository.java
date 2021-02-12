@@ -16,6 +16,7 @@ public interface ObjectRepository {
 	
 	public void createAll(List<? extends RepositoryNode> repositoryNodes);
 
+	public void delete(String id);
 
 	public void createEdges(List<? extends RepositoryEdge> repositoryEdges);
 

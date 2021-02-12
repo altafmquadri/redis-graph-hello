@@ -32,4 +32,8 @@ public class FacilityService {
 		repository.update(facility, id);
 		
 	}
+
+	public void delete(String id){
+		repository.delete(id);
+	}
 }
