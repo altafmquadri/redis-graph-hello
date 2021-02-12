@@ -37,7 +37,6 @@ public class RedisGraphRepository implements ObjectRepository{
 
 	@Override
 	public void create(RepositoryNode repositoryNode) {
-
 		// String query = "CREATE " + "(:"+ repositoryNode.getClass().getSimpleName() + " " +  repositoryNode.getCypherCreateString() + " )";
 		String query = " CREATE ";
 		query += "(:";
@@ -46,6 +45,21 @@ public class RedisGraphRepository implements ObjectRepository{
 		query += repositoryNode.getCypherCreateString() + " )";
 		System.out.println(query);
 		graph.query(graphName,query); 
+	}
+	
+	public void update(RepositoryNode repositoryNode, String id) {
+		// String query = "MATCH + "(n:" + repositoryNode.getClass().getSimpleName(); + 
+		// " {" + uid + ":" + somevalue + " }) SET " + repositoryNode.getCypherUpdateString() + " )"
+		String query = " MATCH ";
+		query += "(n:";
+		query += repositoryNode.getClass().getSimpleName();
+		query += " {uid:";
+		query += id;
+		query += " }) SET ";
+		query += repositoryNode.getCypherUpdateString("n");
+		System.out.println(query);
+		graph.query(graphName, query);
+		
 	}
 
 
@@ -134,8 +148,6 @@ public class RedisGraphRepository implements ObjectRepository{
 					rel.put(property, (String)edge.getProperty(property).getValue());
 				}
 				
-				
-
 				ObjectNode jo = mapper.createObjectNode();
 				jo.set(repositoryEdge.getEdgeElementFieldName(Constants.FROM_NODE), from);
 				jo.set(repositoryEdge.getEdgeElementFieldName(Constants.TO_NODE), to);
@@ -143,8 +155,6 @@ public class RedisGraphRepository implements ObjectRepository{
 
 				RepositoryEdge edgeRE = mapper.treeToValue(jo, repositoryEdge.getClass());
 				
-				
-
 				ja.add(edgeRE);
 			}
 			} catch (JsonProcessingException | IllegalArgumentException | IllegalAccessException e) {
@@ -188,8 +198,6 @@ public class RedisGraphRepository implements ObjectRepository{
 		return ja;
 	}
 
-
-
 	@Override
 	public void createAll(List<? extends RepositoryNode> repositoryNodes) {
 		String query = "";
@@ -206,12 +214,6 @@ public class RedisGraphRepository implements ObjectRepository{
 	@Override
 	public void createEdges(List<? extends RepositoryEdge> repositoryEdges) {
 		// TODO Auto-generated method stub
-
-	}
-
-	public void update(Facility facility) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
