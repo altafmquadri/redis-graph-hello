@@ -19,7 +19,7 @@ import com.redislabs.redisgraph.graph_entities.Edge;
 import com.redislabs.redisgraph.graph_entities.Node;
 import com.redislabs.redisgraph.impl.api.RedisGraph;
 
-import org.springframework.stereotype.Repository;
+
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Protocol;
@@ -88,9 +88,11 @@ public class RedisGraphRepository implements ObjectRepository{
 	    //"MATCH (p:Person {name:'Jim'}) DELETE p"
 	    String query = "";
 	    query += " MATCH (n";
-	    query += " {uid: '" + id;
-	    query += "'} ";
+	    query += " {uid:'" + id;
+	    query += "'}) ";
 	    query += "DELETE n";
+	    System.out.println(query);
+	    graph.query(graphName, query);
     }
 
 
