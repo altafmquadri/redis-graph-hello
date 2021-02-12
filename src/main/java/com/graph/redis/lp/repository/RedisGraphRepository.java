@@ -211,7 +211,11 @@ public class RedisGraphRepository implements ObjectRepository{
 
 	public void update(Facility facility) {
 		// TODO Auto-generated method stub
-		
+		String query = "";
+		query += "MATCH(f {uid:" + facility.getUid() + "}) ";
+		query += "SET " + facility.getCypherUpdateString("f") + " ";
+
+		graph.query(graphName, query);
 	}
 
 }
