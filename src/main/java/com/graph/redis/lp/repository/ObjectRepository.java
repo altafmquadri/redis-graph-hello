@@ -21,4 +21,6 @@ public interface ObjectRepository {
 
 	List<? extends RepositoryEdge> getEdgeByFilter(RepositoryEdge repositoryEdge);
 	
+	public void deleteAll();
+	
 }

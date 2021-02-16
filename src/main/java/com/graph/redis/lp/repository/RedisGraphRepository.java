@@ -227,4 +227,13 @@ public class RedisGraphRepository implements ObjectRepository{
 		// TODO Auto-generated method stub
 	}
 
+	public void deleteAll() {
+		//Match (f:Facility) delete f
+		   String query = "MATCH";
+		   query += " (f:Facility)";
+		   query += " DELETE f";
+		   System.out.println(query);
+		   graph.query(graphName, query);
+	}
+
 }

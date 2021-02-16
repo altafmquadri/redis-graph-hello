@@ -37,4 +37,9 @@ public class FacilityService {
 	public void delete(String id){
 		repository.delete(id);
 	}
+
+	public void deleteAll() {
+		repository.deleteAll();
+		
+	}
 }

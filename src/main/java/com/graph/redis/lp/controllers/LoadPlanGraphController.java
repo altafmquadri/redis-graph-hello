@@ -103,4 +103,10 @@ public class LoadPlanGraphController {
 		facilityService.delete(id);
 		return ResponseEntity.ok("Facility Deleted");
 	}
+	
+	@DeleteMapping(path = "/Facility", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<String> deleteAllFacilities(){
+	   facilityService.deleteAll();
+	   return ResponseEntity.ok("Facilities Deleted");
+	}
 }
